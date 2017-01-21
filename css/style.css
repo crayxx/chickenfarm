@@ -1,0 +1,219 @@
+* {
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+
+html {
+    overflow: auto;
+}
+
+html, body {
+    margin: 0;
+}
+
+body {
+    /* Grundsätzliches zum 'Format'*/
+    width: 100vw;
+    height: 100vh;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: auto;
+    /* Diese Zeilen sorgen dafür, dass der Hauptinhalt mit gleichem Abstand nach oben wie auch unten dargestellt wird*/
+    display: table-cell;
+    vertical-align: middle;
+
+    /* Lassen wir den Hintergrund schön aussehen: */
+    background: #333333;
+    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+
+    /* Damit allgemein der Text passt: */
+    font-size: 16px;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+
+}
+
+/* Damit diese Elemente auch richtig dargestellt werden, brauchen wir das... */
+header, main, nav, footer, section, article, aside {
+    display: block;
+    overflow: hidden;
+}
+
+/* Allgemeines zur Darstellung von Links */
+a {
+    text-decoration: none;
+}
+
+a, a:focus, a:hover {
+    color: #fff;
+}
+
+a:focus, a:hover {
+    text-decoration: underline;
+}
+
+/* Darstellung einer Überschrift Level 1 */
+h1 {
+    font-size: 2.25rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.6;
+    color: inherit;
+    margin-top: 1.25rem;
+    margin-bottom: 0.625rem;
+}
+
+/* HEADER */
+body > header {
+    /* Damit der _immer_ egal was passiert ganz oben in der Mitte angezeigt wird: */
+    position: fixed;
+    top: 0;
+    /* Die ganze Breite füllen */
+    width: 100%;
+
+    /* Die Elemente darin sollen aber trotzdem etwas Platz zum Rand hin haben */
+    padding: 1.875rem;
+}
+
+/* Darstellung des 'Logo-Schriftzug'es im Header */
+body > header h1 {
+    margin: 0.625rem 0;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    /* Damit das Teil auch schön links angezeigt wird */
+    float: left;
+}
+
+/* Die Navigation und alle Elemente darin sollen rechts ausgerichtet sein */
+body > header nav {
+    float: right;
+}
+
+/** Die Links in der Navigation */
+body > header nav > a {
+    display: inline-block;
+    padding: 0.625em 0.937em;
+    font-weight: bold;
+    color: #BFBFBF;
+    color: rgba(255, 255, 255, .75);
+    border-bottom: 2px solid transparent;
+}
+
+body > header nav > a:hover,
+body > header nav > a:focus {
+    text-decoration: none;
+    border-bottom-color: #a9a9a9;
+    border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+/* Alle bis auf das erste Elemente bekommen einen Abstand... */
+body > header nav > a + a {
+    margin-left: 1.25rem;
+}
+
+/* Layout des Hauptinhaltscontainers */
+body > main {
+    /* Breite 50% - nach Bedarf anpassbar */
+    width: 100%;
+    height: auto;
+    /* Header und Footer haben jeweils eine Höhe von ca. 6.65rem,
+     * falls der Header einzeilig und der Footer zweizeilig bleiben
+     * da geben wir noch etwas zusätzliche Toleranz drauf und erhalten 7rem
+     * Damit ist sichergestellt, dass der Hauptinhalt nicht unter Header oder Footer rutscht.
+     */
+    margin: 7rem auto;
+
+    /* Alles im Hauptcontainer mittig darstellen */
+    text-align: center;
+}
+
+/* Der Footer */
+body > footer {
+    /* Dauerhaft ganz unten am Rand ausrichten */
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+    padding: 1.875rem;
+    text-align: center;
+    color: #999;
+    color: rgba(255, 255, 255, .5);
+}
+
+/* Button-Styling*/
+button {
+    display: inline-block;
+    /* 16em ist gewählt, damit alle Button die gleiche Breite haben.
+     * Bei Bedarf entfernen oder anpassen
+     */
+    width: 16em;
+    margin-bottom: 1rem;
+    padding: 10px 20px;
+
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    background-color: #fff;
+
+    font-size: 1.125rem;
+    line-height: 1.3333333;
+    color: #333;
+    text-shadow: none;
+    font-weight: bold;
+
+    border: 1px solid #fff;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+button:active {
+    background-color: #d4d4d4;
+    color: #333;
+    border-color: #8c8c8c;
+}
+
+/********************************
+ * Zum Abschluss ein paar
+ * Media-Queries
+ * damit das ganze ausch bei verschiedenen
+ * Bildschirmgrößen gut aussieht
+ ********************************/
+@media (max-width: 768px) {
+    body > header h1,
+    body > header nav {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+
+    body > header,
+    body > footer {
+        position: relative;
+    }
+}
+
+@media (max-width: 992px) {
+    body > header,
+    body > main,
+    body > footer,
+    div.container {
+        width: 100%;
+    }
+
+    body > main {
+        margin: 1.25rem 0;
+    }
+}
+
+@media (min-width: 992px) {
+    body > main,
+    div.container {
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
